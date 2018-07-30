@@ -1,0 +1,28 @@
+{
+  "name": "xaddax/factories",
+  "type": "library",
+  "description": "Factories",
+  "keywords": ["factory", "PSR-11", "Zend Expressive"],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1",
+    "psr/container": "^1.0"
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.4.4",
+    "codeception/stub": "2.0.1"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Xaddax\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Fixture\\": "tests/_support/Fixture",
+      "Tests\\Functional\\": "tests/functional",
+      "Tests\\Unit\\": "tests/unit"
+    }
+  }
+}
