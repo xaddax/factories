@@ -11,6 +11,7 @@
   "require-dev": {
     "codeception/codeception": "^2.4.4",
     "codeception/stub": "2.0.1",
+    "mongodb/mongodb": "^1.4",
     "phpspec/prophecy": "~1.0"
   },
   "minimum-stability": "dev",
