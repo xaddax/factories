@@ -73,6 +73,20 @@ class GatherConfigValuesCest
         $I->assertEquals($this->expectedConfigNoDefaults(), $values);
     }
 
+    public function testInvokeWithNoDefaultNoConfig(UnitTester $I)
+    {
+        $prophet = new Prophet();
+        $prophecy = $prophet->prophesize();
+        $prophecy->willImplement(ContainerInterface::class);
+        $config = [];
+        $prophecy->get('config')->willReturn($config);
+        $container = $prophecy->reveal();
+
+        $values = (new GatherConfigValues)($container, 'testing');
+
+        $I->assertEquals($this->expectedConfigNoDefaultsNoConfig(), $values);
+    }
+
     private function expectedConfig(): array
     {
         return [
@@ -98,6 +112,17 @@ class GatherConfigValuesCest
                 'color' => 'blue',
                 'size' => 'large',
             ],
+            'trueOrFalse' => false,
+            'value' => 42,
+            'url' => 'https://xaddax.com',
+        ];
+    }
+
+    private function expectedConfigNoDefaultsNoConfig(): array
+    {
+        return [
+            'notSetAnywhere' => 'blah',
+            'optionsSize' => 'large',
             'trueOrFalse' => false,
             'value' => 42,
             'url' => 'https://xaddax.com',

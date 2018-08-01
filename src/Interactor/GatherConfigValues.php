@@ -11,7 +11,7 @@ final class GatherConfigValues
     {
         $values = $this->getDefaultValues($default);
 
-        $configedValues = $container->get('config')[$configName];
+        $configedValues = $container->get('config')[$configName] ?? [];
         $values = $this->configMerge($values, $configedValues);
 
         $env = $_SERVER;
