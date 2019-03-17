@@ -5,8 +5,16 @@ namespace Xaddax\Interactor;
 
 final class CamelCase
 {
-    public function __invoke(string $string): string
+    public function __invoke(string $string, array $noStrip = []): string 
     {
-        return lcfirst(str_replace('_', '', ucwords($string, '_')));
+        // non-alpha and non-numeric characters become spaces
+        $string = preg_replace('/[^a-z0-9' . implode("", $noStrip) . ']+/i', ' ', $string);
+        $string = trim($string);
+        // uppercase the first character of each word
+        $string = ucwords($string);
+        $string = str_replace(" ", "", $string);
+        $string = lcfirst($string);
+
+        return $string;
     }
 }
