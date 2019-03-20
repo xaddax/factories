@@ -7,6 +7,6 @@ final class PascalCase
 {
     public function __invoke(string $string, array $noStrip = []): string
     {
-        return ucfirst((new CamelCase))($string, $noStrip);
+        return ucfirst((new CamelCase)($string, $noStrip));
     }
 }
